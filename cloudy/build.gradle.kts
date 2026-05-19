@@ -28,7 +28,7 @@ plugins {
 apply(from = "${rootDir}/scripts/publish-module.gradle.kts")
 
 mavenPublishing {
-  val artifactId = "cloudy"
+  val artifactId = "android-blur"
   project.group = Configuration.artifactGroup
   coordinates(
     artifactId = artifactId,
