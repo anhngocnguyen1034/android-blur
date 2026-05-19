@@ -1,0 +1,14 @@
+jdk:
+  - openjdk17
+
+# Cloudy là KMP. JitPack chạy trên Linux (không có Xcode) nên chỉ publish
+# artifact Android + metadata Kotlin Multiplatform; bỏ qua iOS/desktop/wasm
+# để tránh fail. Gradle phía consumer sẽ tự resolve variant Android.
+install:
+  - ./gradlew
+      :cloudy:publishKotlinMultiplatformPublicationToMavenLocal
+      :cloudy:publishAndroidReleasePublicationToMavenLocal
+      -x test
+      --no-daemon
+      -Pgroup=com.github.anhngocnguyen1034
+      -Pversion=1.0.0
